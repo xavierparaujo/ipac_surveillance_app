@@ -17,7 +17,8 @@ required_packages <- c(
   "lubridate",
   "glue",
   "shiny",
-  "shinydashboard"
+  "shinydashboard",
+  "plotly"
 )
 
 # Call the function to load or install packages
