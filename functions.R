@@ -69,3 +69,23 @@ generate_database = function(){
   # Print the first few rows
   return(infection_db)
 }
+
+# import and clean data
+import_database = function(path_to_data){
+  
+  infection_db = read.csv(path_to_data) %>%
+    mutate(
+      sample_datetime = as.POSIXct(sample_datetime),
+      fiscal_period = factor(glue('{fiscal_year}-{sprintf("%02d", fiscal_period)}')),
+      fiscal_quarter = factor(glue('{fiscal_year}-Q{fiscal_quarter}')),
+      fiscal_year = factor(fiscal_year),
+      infection_type = factor(infection_type),
+      collected_facility = factor(collected_facility),
+      collected_unit = factor(collected_unit),
+      acquired_facility = factor(acquired_facility),
+      acquired_unit = factor(acquired_unit),
+      classification = factor(classification)
+    )
+  
+  return(infection_db)
+}

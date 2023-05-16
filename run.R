@@ -1,10 +1,5 @@
 setwd(getwd())
 source('functions.R')
-source('app/pages/covid.R')
-source('app/pages/cdi.R')
-source('app/pages/mrsa.R')
-source('app/pages/esbl.R')
-source('app/pages/vre.R')
 
 PATH_TO_DATABASE = 'data/infection_database.csv'
 
@@ -21,5 +16,11 @@ PT_DAYS <<- INFECTION_DB %>%
 FACILITIES <<- INFECTION_DB$collected_facility %>% unique()
 
 UNITS <<- INFECTION_DB$collected_unit %>% unique()
+
+source('app/pages/covid.R')
+source('app/pages/cdi.R')
+source('app/pages/mrsa.R')
+source('app/pages/esbl.R')
+source('app/pages/vre.R')
 
 shiny::runApp('app/')
